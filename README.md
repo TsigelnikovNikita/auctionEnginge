@@ -1,7 +1,7 @@
 # auctionEnginge Smart Contract
 
 ### Description of smart contract
-This smart contract is designed for [Dutch auctions](https://en.wikipedia.org/wiki/Dutch_auction) creating. Anyone can create a new auction and anyone can buy an item.
+This smart contract is designed for [Dutch auctions](https://en.wikipedia.org/wiki/Dutch_auction) creating. Anyone can create a new auction and anyone can buy an item. Owner of smart contract gets 10% for every purchase.
 
 ### Stack
 The smart contract is written using Solidity for the Ethereum blockchain.

@@ -2,11 +2,12 @@
 pragma solidity ^0.8.0;
 
 import "hardhat/console.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract AucEngine {
-    address public owner;
+contract AucEngine is Ownable {
     uint constant DURATION = 2 days;
     uint constant FEE = 10; // 10%
+    uint private availableFee;
 
     struct Auction {
         address payable seller;
@@ -23,10 +24,6 @@ contract AucEngine {
 
     event auctionCreated(uint index, string itemName, uint startingPrice, uint duration);
     event auctionEnded(uint index, uint finalPrice, address winner);
-
-    constructor() {
-        owner = msg.sender;
-    }
 
     function createAuction(
         uint _strartingPrice,
@@ -81,6 +78,12 @@ contract AucEngine {
         auction.seller.transfer(
             price - ((price * FEE) / 100)
         );
+        availableFee += price / FEE;
         emit auctionEnded(index, price, msg.sender);
+    }
+
+    function withdraw() external onlyOwner {
+        payable(owner()).transfer(availableFee);
+        availableFee = 0;
     }
 }

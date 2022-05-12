@@ -1,5 +1,6 @@
 require("@nomiclabs/hardhat-waffle");
 require("solidity-coverage")
+require('hardhat-dependency-compiler');
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
@@ -9,4 +10,9 @@ require("solidity-coverage")
  */
 module.exports = {
   solidity: "0.8.4",
+  dependencyCompiler: {
+    paths: [
+      '@openzeppelin/contracts/access/Ownable.sol',
+    ],
+  },
 };

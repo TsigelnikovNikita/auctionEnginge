@@ -5,6 +5,8 @@
   },
   "dependencies": {
     "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@openzeppelin/contracts": "^4.6.0",
+    "hardhat-dependency-compiler": "^1.1.2",
     "solidity-coverage": "^0.7.21"
   }
 }
